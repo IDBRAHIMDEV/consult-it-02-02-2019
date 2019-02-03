@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ContentComponent } from './content/content.component';
 
 import { FormsModule } from '@angular/forms';
+import { VotesComponent } from './votes/votes.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    ContentComponent
+    ContentComponent,
+    VotesComponent
   ],
   imports: [
     BrowserModule,

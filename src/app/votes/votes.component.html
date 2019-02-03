@@ -1,0 +1,12 @@
+<button [ngClass]="{
+  'btn-dark': like == 0,
+  'btn-primary': like > 0
+}" class="btn btn-dark mr-2" (click)="incLike()">
+  <i class="fa fa-thumbs-up"></i> {{ like }}
+</button>
+<button [ngClass]="{
+  'btn-dark': dislike == 0,
+  'btn-warning': dislike > 0
+}" class="btn btn-dark" (click)="incDislike()">
+  <i class="fa fa-thumbs-down"></i> {{ dislike }}
+</button>

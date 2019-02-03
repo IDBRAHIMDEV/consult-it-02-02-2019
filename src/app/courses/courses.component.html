@@ -1,5 +1,33 @@
 
   
+   <div class="row">
+     <div class="col-md-12">
+         
+        <nav class="nav nav-pills nav-fill">
+            <a (click)="myCourseFavorite='Laravel'" class="nav-item nav-link" [class.active]="myCourseFavorite=='Laravel'" href="#">Laravel</a>
+            <a (click)="myCourseFavorite='JavaEE'" class="nav-item nav-link"  [class.active]="myCourseFavorite=='JavaEE'" href="#">JavaEE</a>
+            <a (click)="myCourseFavorite='Angular'" class="nav-item nav-link"  [class.active]="myCourseFavorite=='Angular'"href="#">Angular</a>
+        </nav>
+        
+        <div [ngSwitch]="myCourseFavorite">
+          <div *ngSwitchCase="'Laravel'">
+            <h1>Formation Laravel</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At est dolores harum error dolorum eum id dicta, expedita iure ab!</p>
+          </div>
+          <div *ngSwitchCase="'JavaEE'">
+              <h1>Formation JavaEE</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At est dolores harum error dolorum eum id dicta, expedita iure ab!</p>
+          </div>
+          <div *ngSwitchCase="'Angular'">
+              <h1>Formation Angular</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At est dolores harum error dolorum eum id dicta, expedita iure ab!</p>
+          </div>
+        </div>
+
+     </div>
+   </div>
+
+
   <div class="row">
     <div class="col-md-12">
       <h1>{{ myCourse.label }}</h1>
@@ -37,6 +65,7 @@
           <tr>
             <th>Id</th>
             <th>Label</th>
+            <th>Vote</th>
             <th></th>
           </tr>
         </thead>
@@ -59,6 +88,12 @@
                {{ course.id }}
               </td>
             <td>{{ course.label }}</td>
+            <td>
+              <app-votes [like]="course.vote.like" [dislike]="course.vote.dislike"
+              (onChangeVotes)="updateVoteInCourse(course, $event)"
+              >
+              </app-votes>
+            </td>
             <td class="text-right">
               <button class="btn btn-sm btn-danger"
               (click)=" DeleteCourse(i)">
