@@ -10,6 +10,9 @@ import { ContentComponent } from './content/content.component';
 
 import { FormsModule } from '@angular/forms';
 import { VotesComponent } from './votes/votes.component';
+import { PostsComponent } from './posts/posts.component';
+
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,11 +22,13 @@ import { VotesComponent } from './votes/votes.component';
     SidebarComponent,
     FooterComponent,
     ContentComponent,
-    VotesComponent
+    VotesComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
