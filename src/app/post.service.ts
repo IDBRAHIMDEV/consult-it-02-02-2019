@@ -5,19 +5,24 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PostService {
-
+  url = 'https://jsonplaceholder.typicode.com/posts';
+  
   constructor(private http: HttpClient) { }
 
   getPosts() {
-    return this.http.get('https://jsonplaceholder.typicode.com/posts');
+    return this.http.get(this.url);
   }
 
   persistPost(post) {
-   return this.http.post('https://jsonplaceholder.typicode.com/posts', post)
+   return this.http.post(this.url, post)
   }
 
   updatePost(post) {
-    return this.http.put(`https://jsonplaceholder.typicode.com/posts/${post.id}`, post);
+    return this.http.put(`${this.url}/${post.id}`, post);
+  }
+
+  deletePost(id) {
+   return this.http.delete(this.url+'/'+id);
   }
 
 }

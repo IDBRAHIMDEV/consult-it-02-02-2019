@@ -44,7 +44,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-4" *ngFor="let post of posts">
+  <div class="col-md-4" *ngFor="let post of posts; index as i">
     <div class="card">
       <img class="card-img-top" [src]="'https://picsum.photos/200/300?image='+post.id" alt="">
       <div class="card-body">
@@ -55,7 +55,7 @@
               <button class="btn btn-warning" (click)="editPost(post)">
                   <i class="fa fa-pencil"></i>
                 </button>
-                  <button class="btn btn-dark">
+                  <button class="btn btn-dark" (click)=" removePost(post.id, i)">
                     <i class="fa fa-trash"></i>
                   </button>
           </div>

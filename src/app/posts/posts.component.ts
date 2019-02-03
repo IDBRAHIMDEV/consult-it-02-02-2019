@@ -1,5 +1,6 @@
 import { PostService } from './../post.service';
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-posts',
@@ -75,6 +76,48 @@ export class PostsComponent implements OnInit {
       title: "",
       body: ""
     }
+  }
+
+  removePost(id, index) {
+    
+    Swal({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this imaginary file!',
+      type: 'error',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it'
+    }).then((result) => {
+      if (result.value) {
+
+           this.postService.deletePost(id)
+            .subscribe((res) => {
+              this.posts.splice(index, 1)
+            })
+
+        Swal({
+          title: 'Deleted',
+          text: 'this post is deleted !!',
+          type: 'success',
+          timer: 3000
+        })
+      // For more information about handling dismissals please visit
+      // https://sweetalert2.github.io/#handling-dismissals
+      } 
+     
+    })
+    
+
+
+
+    // if(confirm('Are you sure to delete post ?')) {
+    //   this.postService.deletePost(id)
+    //      .subscribe((res) => {
+    //        this.posts.splice(index, 1)
+    //      })
+    // }
+
+     
   }
 
 }
